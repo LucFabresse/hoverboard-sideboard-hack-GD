@@ -75,6 +75,7 @@ int main(void)
 	systick_config(); 									// SysTick config    
 	gpio_config();										// GPIO config		
 	usart_config(USART_MAIN, USART_MAIN_BAUD); 			// USART config
+	// usart_config(USART_AUX, USART_AUX_BAUD); 			// USART config
 	i2c_config(); 										// I2C config			
 	i2c_nvic_config();									// NVIC peripheral config	
 	

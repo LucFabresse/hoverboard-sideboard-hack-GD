@@ -16,7 +16,7 @@ String check="";
 void setup() {
   size (1400, 800, P3D);    
   printArray(Serial.list());                 // List all the available serial ports    
-  myPort = new Serial(this, "COM5", 38400);   // starts the serial communication
+  myPort = new Serial(this, "/dev/ttyUSB0", 38400);   // starts the serial communication
   myPort.bufferUntil('\n');
 }
 
