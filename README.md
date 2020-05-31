@@ -13,6 +13,7 @@ This repository implements the firmware for the hoveboard sideboards. The hovebo
 
 The original sideboard hardware supports one 4-pin cable that originally was connected to the hoveboard mainboard. It breaks out GND, 12/15V and USART. Additionally, two ports are used to connect to the LED boards. On the back of the board, two Photo Interrupter Optical Switches can be found, originally used to detect if a human is standing on the hoverboard.
 ![sideboard](/docs/pictures/sideboard_pinout.png)
+![sideboard variant](/docs/pictures/sideboard_pinout_variant.jpeg)
 
 The LED boards consist of colored LEDs (blue, red, green, orange) used for design and to inform the user about the current hoverboard state. Below the pinout of the LED boards is shown.
 ![ledboard](/docs/pictures/ledboard_pinout.png)
@@ -35,7 +36,7 @@ The [MPU-6050](https://www.invensense.com/products/motion-tracking/6-axis/mpu-60
 For more details see the [MPU-6050 datasheet](/docs/1_MPU-6000-Datasheet.pdf) and [MPU-6050 registers](/docs/2_MPU-6000-Register-Map.pdf).
 
 ---
-## Flashing 
+## Flashing
 
 On the sideboard, there is a debugging header with GND, 3V3, SWDIO and SWCLK. Connect GND, SWDIO and SWCLK to your ST-Link V2 programmer. The 3V3 can be either obtained by connecting the pin to the ST-Link programmer or powering the sideboard with 12/15V.
 
@@ -47,7 +48,7 @@ To build and flash choose one of the following methods:
 
 Because the [GD32F130C6T6](/docs/GD32F130xx-Datasheet_Rev3.3.pdf) is not yet supported by [PlatformIO](https://platformio.org/), we have to make two extra steps. These steps can be skipped once the board is supported (see [this thread](https://community.platformio.org/t/build-gd32-project-with-platformio/11944)).
 
-- go to your PlatformIO home folder (Windows: `C:\Users\<user>\.platformio`, Unix/Max: `/home/<user>/.platformio`). Then go into `packages`. If the folder `framework-spl` exists, delete it. 
+- go to your PlatformIO home folder (Windows: `C:\Users\<user>\.platformio`, Unix/Max: `/home/<user>/.platformio`). Then go into `packages`. If the folder `framework-spl` exists, delete it.
 
 - unpack the `framework-spl.zip` in the `packages` folder so that the directory structure is now:
 ```
@@ -85,10 +86,10 @@ make flash
 
 
 ---
-## Example Variants 
+## Example Variants
 
 This firmware offers currently these variants (selectable in [platformio.ini](/platformio.ini) or [config.h](/Inc/config.h)):
-- **VARIANT_DEBUG**: In this variant the user can interact with sideboard by sending commands via a Serial Monitor to observe and check the capabilities of the sideboard.
+- **VARIANT_DEBUG**: In this variant the user can interact with sideboard by sending commands via a Serial Monitor to observe and check the capabilities of the sideboard. Connect through `USART_MAIN` at 38400 bauds and send command `h`.
 - **VARIANT_HOVERBOARD**: In this variant the sideboard is communicating with the mainboard of a hoverboard using the [FOC firmware repository](https://github.com/EmanuelFeru/hoverboard-firmware-hack-FOC).
 
 Of course the firmware can be further customized for other needs or projects.
@@ -104,7 +105,7 @@ By [converting Quaternions to Euler angles](https://en.wikipedia.org/wiki/Conver
 ---
 ## Contributions
 
-Every contribution to this repository is highly appreciated! Feel free to create pull requests to improve this firmware as ultimately you are going to help everyone. 
+Every contribution to this repository is highly appreciated! Feel free to create pull requests to improve this firmware as ultimately you are going to help everyone.
 
 If you want to donate to keep this firmware updated, please use the link below:
 
